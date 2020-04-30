@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <div>
+
     <div class="flex-top">
         <div>稱號</div>
         <input type="text" v-model="name" >
     </div>
-    <div class="chatroom">
+    <div class="chatroom" id="chatroom1">
     <div v-for="(item,index) in districts" :key="index"  :class="{anotherOne:item.name!==name,isMe:item.name===name}">
       <div style="color:green" v-if="item.name!==name">
         {{item.name}}
@@ -22,7 +22,7 @@
       <input type="text" v-model="inputValue" class="input-1" >
       <button @click="sendMessage" class="btn-1" >send</button>
     </div>
-  </div>
+
   </div>
 </template>
 
@@ -45,6 +45,8 @@ export default {
         ? Object.keys(data).map(key => ({ id: key, ...data[key] }))
         : null
       this.districts = Object.assign(messageData)
+      const objDiv = document.querySelector('#chatroom1')
+      objDiv.scrollTop = objDiv.scrollHeight + 100
     })
   },
   methods: {
@@ -82,7 +84,7 @@ export default {
 }
 .isMe{
   text-align: right;
-  margin-top:10px
+  margin-top:30px
 }
 .messageBox{
   color: black;
@@ -104,16 +106,22 @@ export default {
   top: 0;
  }
  .input-1{
-   height: 30px;
+   height: 5vh;
    width: 80%
  }
  .btn-1{
-   width:10%;
+   width:5vh;
    height: 30px;
    background:rgb(153, 151, 151)
  }
  .chatroom{
-  padding-top: 50px;
-  padding-bottom: 50px;
+  background-color: #fff;
+  height: 95vh;
+  padding-bottom: 20vh;
+  overflow-y: auto;
+  overflow-x: hidden;
  }
+ /* #chatroom1{ */
+
+ /* } */
 </style>
