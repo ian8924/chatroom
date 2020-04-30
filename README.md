@@ -1,5 +1,6 @@
 # vue-chatroom
-
+簡易版聊天室
+firebase + vue
 ## Project setup
 ```
 npm install
